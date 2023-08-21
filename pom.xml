@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<properties>
-		<jar.output.directory>D:\</jar.output.directory>
+		<jar.output.directory>${env.M2_REPOSITORY}</jar.output.directory>
 	</properties>
 
 	<dependencies>
@@ -28,7 +28,7 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.3.0</version>
 				<configuration>
-					<outputDirectory>${jar.output.directory}</outputDirectory>
+					<outputDirectory>${jar.output.directory}/${project.groupId}/${project.name}</outputDirectory>
 				</configuration>
 			</plugin>
 			<plugin>

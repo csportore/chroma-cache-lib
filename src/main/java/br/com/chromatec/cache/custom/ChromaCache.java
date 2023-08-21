@@ -4,7 +4,9 @@ import java.util.concurrent.Callable;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ChromaCache implements Cache {
 
 	public String getName() {
