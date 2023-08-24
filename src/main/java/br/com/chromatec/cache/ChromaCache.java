@@ -1,16 +1,29 @@
-package br.com.chromatec.cache.custom;
+package br.com.chromatec.cache;
 
+import java.util.HashMap;
 import java.util.concurrent.Callable;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class ChromaCache implements Cache {
+	
+	private HashMap<String, Object> content;
+	private String name;
+	
+	public ChromaCache() {
+		this.content = new HashMap<String, Object>();
+		this.name = "default";
+	}
+	
+	public ChromaCache(String name) {
+		this.content = new HashMap<String, Object>();
+		this.name = name;
+	}
 
 	public String getName() {
-		return "Cache Name";
+		return this.name;
 	}
 
 	public Object getNativeCache() {
@@ -18,7 +31,8 @@ public class ChromaCache implements Cache {
 	}
 
 	public ValueWrapper get(Object key) {
-		return new SimpleValueWrapper(key.toString());
+		Object r = this.content.get(key.toString());
+		return  r == null ? null : new SimpleValueWrapper(r);
 	}
 
 	public <T> T get(Object key, Class<T> type) {
@@ -30,18 +44,16 @@ public class ChromaCache implements Cache {
 	}
 
 	public void put(Object key, Object value) {
-		// TODO Auto-generated method stub
-		
+		this.content.put(key.toString(), value);
 	}
 
 	public void evict(Object key) {
-		// TODO Auto-generated method stub
+		this.content.remove(key.toString());
 		
 	}
 
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		this.content.clear();
 	}
 	
 }

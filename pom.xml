@@ -8,7 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<properties>
-		<jar.output.directory>${env.M2_REPOSITORY}</jar.output.directory>
+		<maven.compiler.source>17</maven.compiler.source>
+    	<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -20,23 +21,5 @@
 			<version>3.1.2</version>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.3.0</version>
-				<configuration>
-					<outputDirectory>${jar.output.directory}/${project.groupId}/${project.name}</outputDirectory>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>
