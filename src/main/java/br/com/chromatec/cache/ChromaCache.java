@@ -8,17 +8,11 @@ import org.springframework.cache.support.SimpleValueWrapper;
 
 
 public class ChromaCache implements Cache {
-	
 	private HashMap<String, Object> content;
 	private String name;
 	
-	public ChromaCache() {
-		this.content = new HashMap<String, Object>();
-		this.name = "default";
-	}
-	
 	public ChromaCache(String name) {
-		this.content = new HashMap<String, Object>();
+		this.content = new HashMap<>();
 		this.name = name;
 	}
 
@@ -27,7 +21,7 @@ public class ChromaCache implements Cache {
 	}
 
 	public Object getNativeCache() {
-		throw new UnsupportedOperationException();
+		return this.content;
 	}
 
 	public ValueWrapper get(Object key) {
