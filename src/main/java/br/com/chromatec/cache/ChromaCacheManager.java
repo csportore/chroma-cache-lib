@@ -2,19 +2,13 @@ package br.com.chromatec.cache;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.HashMap;
 
 
-@Component
 public class ChromaCacheManager implements CacheManager {
 	private HashMap<String, ChromaCache> caches;
-
-	public ChromaCacheManager() {
-		this.caches = new HashMap<>();
-	}
 
 	public ChromaCacheManager(ChromaCache cache) {
 		this.caches = new HashMap<>();
@@ -32,7 +26,7 @@ public class ChromaCacheManager implements CacheManager {
 		var c = this.caches.get(name);
 		
 		if (c == null) {
-			c = new ChromaCache("default");
+			c = new ChromaCache(name);
 			this.caches.put(name, c);
 		}
 		
@@ -43,4 +37,10 @@ public class ChromaCacheManager implements CacheManager {
 		return this.caches.keySet();
 	}
 
+	@Override
+	public String toString() {
+		return "ChromaCacheManager{" +
+				"caches=" + caches +
+				'}';
+	}
 }

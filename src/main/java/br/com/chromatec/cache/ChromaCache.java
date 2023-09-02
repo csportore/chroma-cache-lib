@@ -6,7 +6,6 @@ import java.util.concurrent.Callable;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
 
-
 public class ChromaCache implements Cache {
 	private HashMap<String, Object> content;
 	private String name;
@@ -49,5 +48,12 @@ public class ChromaCache implements Cache {
 	public void clear() {
 		this.content.clear();
 	}
-	
+
+	@Override
+	public String toString() {
+		return "ChromaCache{" +
+				"content=" + content +
+				", name='" + name + '\'' +
+				'}';
+	}
 }
